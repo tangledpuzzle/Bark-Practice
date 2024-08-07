@@ -1,0 +1,30 @@
+# fly.toml app configuration file generated for optimizedbark on 2024-03-21T15:52:56Z
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = 'optimizedbark'
+organization = 'air-297'
+primary_region = 'ord'
+
+[build]
+  image = 'registry.fly.io/optimizedbark:deployment-01HSGVEAG5VFAM5X6CRC243K82'
+
+[env]
+  DEFAULT_VOICE = "hey_james_reliable_1_small_coarse_fix"
+  redis_url = "redis://default:eb7199cbf0f54bf5bb084f7f1d594692@fly-bark-queries.upstash.io:6379"
+  mongo_uri = "mongodb+srv://ginger:P%40ssw0rd131181@bark-log.1fit2mh.mongodb.net/?retryWrites=true&w=majority&appName=bark-log"
+
+[http_service]
+  auto_stop_machines = false
+  auto_start_machines = true
+  min_machines_running = 1
+  processes = ['app']
+
+[[vm]]
+  size = 'a100-40gb'
+  memory = '20gb'
+  cpu_kind = 'performance'
+  gpu_kind = 'a100-pcie-40gb'
+  cpus = 4
+  gpus = 1

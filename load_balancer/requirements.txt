@@ -1,0 +1,6 @@
+fastapi
+redis
+uvicorn
+google-cloud-storage
+invoke
+pymongo

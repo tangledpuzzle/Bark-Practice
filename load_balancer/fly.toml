@@ -1,0 +1,27 @@
+# fly.toml app configuration file generated for tts-app on 2024-03-21T17:18:26Z
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = 'tts-app'
+primary_region = 'ord'
+
+[env]
+  FLY_TOKEN = "fo1_6nTnPORTHvk6FA_Qas5JyJhfRr_FRYNcHEHh0VJXtSQ"
+  GPU_NUM_THRESHOLD = 2
+  GPU_TIME_THRESHOLD = 60
+  redis_url = "redis://default:eb7199cbf0f54bf5bb084f7f1d594692@fly-bark-queries.upstash.io:6379"
+#  mongo_uri = "mongodb+srv://ginger:P%40ssw0rd131181@bark-log.1fit2mh.mongodb.net/?retryWrites=true&w=majority&appName=bark-log"
+
+[http_service]
+  internal_port = 5000
+  force_https = true
+  auto_stop_machines = false
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ['app']
+
+[[vm]]
+  memory = '4gb'
+  cpu_kind = 'shared'
+  cpus = 2
